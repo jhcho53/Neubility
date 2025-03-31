@@ -8,7 +8,7 @@ nvmlInit()
 handle = nvmlDeviceGetHandleByIndex(0)  # GPU 0번 사용
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 model_path = "HuggingFaceTB/SmolVLM2-256M-Video-Instruct"
-processor = AutoProcessor.from_pretrained(model_path)
+processor = AutoProcessor.from_pretrained(model_path) 
 model = AutoModelForImageTextToText.from_pretrained(
     model_path,
     torch_dtype=torch.float16,

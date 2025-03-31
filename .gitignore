@@ -1,1 +1,6 @@
 Dataset/task1/*.mp4
+Dataset/*
+Viz/binary/*
+Viz/Describe/*
+Viz/*.mp4
+output_annotated_video.mp4

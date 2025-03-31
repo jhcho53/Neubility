@@ -49,7 +49,7 @@ transform = transforms.Compose([
 ])
 
 dataset = FightEventDataset(
-    "/home/jaehyeon/Desktop/neubility/Dataset/task1",
+    "/home/jaehyeon/Desktop/neubility/Dataset/weapon possession-20250331T062204Z-001/weapon possession",
     transform=transform,
     frame_interval=30
 )
@@ -60,7 +60,7 @@ y_pred = []
 torch.cuda.synchronize()
 start_time = time.time()
 # Initialize processor and model
-model_path = "HuggingFaceTB/SmolVLM2-2.2B-Instruct"
+model_path = "HuggingFaceTB/SmolVLM-256M-Instruct"
 processor = AutoProcessor.from_pretrained(model_path)
 model = AutoModelForImageTextToText.from_pretrained(
     model_path,
@@ -74,7 +74,7 @@ messages = [
         "role": "user",
         "content": [
             {"type": "image"},
-            {"type": "text", "text": "Classify the image into one of the following categories: Fire, Smoke, Fallen Person, Fight, Weapon Being Carried, general. Respond with only the category name."}
+            {"type": "text", "text": "Describe the image."}
         ]
     },
 ]

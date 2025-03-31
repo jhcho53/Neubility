@@ -48,7 +48,7 @@ transform = transforms.Compose([
 ])
 
 dataset = FightEventDataset(
-    "/home/jaehyeon/Desktop/neubility/Dataset/task1",
+    "/home/jaehyeon/Desktop/neubility/Dataset/smoke-20250331T062203Z-001/smoke",
     transform=transform,
     frame_interval=30
 )
@@ -72,7 +72,7 @@ processor = AutoProcessor.from_pretrained(
 
 
 
-prompt = "Analyze the image and determine which category it falls under from the following options: Fire, Smoke, Fallen Person, Fight, Weapon Being Carried, None of the Above. Provide only one category as your final answer."
+prompt = "Classify the image as either smoke or general."
 
 
 for i in tqdm(range(len(dataset))):
