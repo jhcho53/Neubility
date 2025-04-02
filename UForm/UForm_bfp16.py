@@ -23,7 +23,7 @@ possible_labels = [
     "general",
 ]
 
-# 텍스트에서 라벨 추출 함수
+# 텍스트에서 라벨 추출 
 import re
 
 def extract_label(text):
@@ -58,7 +58,7 @@ y_pred = []
 
 torch.cuda.synchronize()
 start_time = time.time()
-# Initialize processor and model
+
 model = AutoModel.from_pretrained(
     "unum-cloud/uform-gen2-qwen-500m",
     torch_dtype=torch.float16,
@@ -100,11 +100,11 @@ for i in tqdm(range(len(dataset))):
 torch.cuda.synchronize()
 end_time = time.time()
 
-# 5. 성능 출력
-print("\n📊 Classification Report:")
+# 성능 출력
+print("\n Classification Report:")
 print(classification_report(y_true, y_pred, labels=possible_labels, zero_division=0))
 
-# 6. Confusion Matrix 시각화
+# Confusion Matrix 시각화
 cm = confusion_matrix(y_true, y_pred, labels=possible_labels)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=possible_labels)
 disp.plot(cmap="Blues", xticks_rotation=45)
@@ -112,7 +112,7 @@ plt.title("Confusion Matrix")
 plt.tight_layout()
 plt.show()
 
-# 7. FPS 계산
+# FPS 계산
 elapsed = end_time - start_time
 fps = len(dataset) / elapsed
 print(f"\n⏱ Total inference time: {elapsed:.2f} seconds for {len(dataset)} frames")
