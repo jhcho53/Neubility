@@ -6,13 +6,11 @@ import PIL.Image
 from dataloader.dataloader import FightEventDataset
 
 
-# PIL.Image 지원하는 collate_fn
 def pil_collate_fn(batch):
-    # batch: [(image, label), ...]
-    images, labels = zip(*batch)  # unzip
+    images, labels = zip(*batch)  
     return list(images), list(labels)
 
-# 이미지 전처리 (NVILA는 PIL.Image.Image 타입을 받음)
+# 이미지 전처리
 def cv2_to_pil(image):
     return PIL.Image.fromarray(image)
 
